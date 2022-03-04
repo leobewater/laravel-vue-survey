@@ -1,15 +1,9 @@
-<script>
-import { mapState } from 'vuex'
-
-export default {
-  computed: {
-    ...mapState(['user']),
-  },
-}
+<script setup>
+import SignIn from './components/SignIn.vue'
 </script>
 
 <template>
-  <pre>{{ user }}</pre>
+  <SignIn />
 </template>
 
 <style>
