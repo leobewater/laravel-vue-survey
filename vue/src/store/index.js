@@ -128,6 +128,108 @@ const tmpSurveys = [
       },
     ],
   },
+  {
+    id: 102,
+    title: 'Survey2',
+    slug: 'survey2',
+    status: 'draft',
+    image:
+      'https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEyqj2_400x400.png',
+    description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
+    created_at: '2022-03-04 14:22:00',
+    updated_at: '2022-03-04 14:22:00',
+    expire_date: '2022-03-04 14:22:00',
+    questions: [
+      {
+        id: 2,
+        type: 'checkbox',
+        question: 'What language videos do you want to see?',
+        description: null,
+        data: {
+          options: [
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs', text: 'JS' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313', text: 'PHP' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312', text: 'HTML' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777', text: 'CSS' },
+          ],
+        },
+      },
+      {
+        id: 4,
+        type: 'radio',
+        question: 'Which Laravel framework do you love the most?',
+        description: null,
+        data: {
+          options: [
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs',
+              text: 'Laravel 5',
+            },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313', text: 'Laravel 6' },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312',
+              text: 'Laravel 7',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777',
+              text: 'Laravel 8',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777',
+              text: 'Laravel 9',
+            },
+          ],
+        },
+      },
+      {
+        id: 6,
+        type: 'text',
+        question: "What's your favorite youtube channe?",
+        description: null,
+        data: {},
+      },
+    ],
+  },
+  {
+    id: 104,
+    title: 'Survey 3',
+    slug: 'survey-3',
+    status: 'draft',
+    image:
+      'https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEyqj2_400x400.png',
+    description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
+    created_at: '2022-03-04 14:22:00',
+    updated_at: '2022-03-04 14:22:00',
+    expire_date: '2022-03-04 14:22:00',
+    questions: [
+      {
+        id: 5,
+        type: 'checkbox',
+        question: 'What industry?',
+        description: null,
+        data: {
+          options: [
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs',
+              text: 'ecommerce',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313',
+              text: 'real estate',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312',
+              text: 'consumer goods',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777',
+              text: 'all of the above',
+            },
+          ],
+        },
+      },
+    ],
+  },
 ]
 
 const store = createStore({
