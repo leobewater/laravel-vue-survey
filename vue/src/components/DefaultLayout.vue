@@ -21,35 +21,27 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <a
+                <router-link
                   v-for="item in navigation"
                   :key="item.name"
-                  :href="item.href"
+                  :to="item.to"
+                  active-class="bg-gray-900 text-white"
                   :class="[
-                    item.current
-                      ? 'bg-gray-900 text-white'
+                    this.$route.name === item.to.name
+                      ? ''
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'px-3 py-2 rounded-md text-sm font-medium',
                   ]"
-                  :aria-current="item.current ? 'page' : undefined"
-                  >{{ item.name }}</a
+                  >{{ item.name }}</router-link
                 >
               </div>
             </div>
           </div>
           <div class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
-              <button
-                type="button"
-                class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-              >
-                <span class="sr-only">View notifications</span>
-                <BellIcon class="h-6 w-6" aria-hidden="true" />
-              </button>
-
               <!-- Profile dropdown -->
               <Menu as="div" class="ml-3 relative">
-                <div>
+                <div class="flex">
                   <MenuButton
                     class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
@@ -106,19 +98,18 @@
 
       <DisclosurePanel class="md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <DisclosureButton
+          <router-link
             v-for="item in navigation"
             :key="item.name"
-            as="a"
-            :href="item.href"
+            :to="item.to"
+            active-class="bg-gray-900 text-white"
             :class="[
-              item.current
-                ? 'bg-gray-900 text-white'
+              this.$route.name === item.to.name
+                ? ''
                 : 'text-gray-300 hover:bg-gray-700 hover:text-white',
               'block px-3 py-2 rounded-md text-base font-medium',
             ]"
-            :aria-current="item.current ? 'page' : undefined"
-            >{{ item.name }}</DisclosureButton
+            >{{ item.name }}</router-link
           >
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">
@@ -175,7 +166,7 @@ import { computed } from 'vue'
 
 const navigation = [
   { name: 'Dashboard', to: { name: 'Dashboard' } },
-  { name: 'Team', to: { name: 'Surveys' } },
+  { name: 'Surveys', to: { name: 'Surveys' } },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
