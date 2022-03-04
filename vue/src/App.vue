@@ -1,9 +1,8 @@
 <script setup>
-import SignIn from './components/SignIn.vue'
 </script>
 
 <template>
-  <SignIn />
+  <router-view />
 </template>
 
 <style>
