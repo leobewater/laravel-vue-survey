@@ -1,6 +1,22 @@
 import { createStore } from 'vuex'
 import axiosClient from '../axios'
 
+const tmpSurveys = [
+  {
+    id: 100,
+    title: 'Youtube Channel content',
+    slug: 'youtube-channel-content',
+    status: 'draft',
+    image:
+      'https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEyqj2_400x400.png',
+    description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
+    created_at: '2022-03-04 14:22:00',
+    updated_at: '2022-03-04 14:22:00',
+    expire_date: '2022-03-04 14:22:00',
+    questions: [],
+  },
+]
+
 const store = createStore({
   state: {
     user: {
