@@ -181,10 +181,11 @@ export default {
     const router = useRouter()
 
     function logout() {
-      // commit a mutation in vuex
-      store.commit('logout')
-      router.push({
-        name: 'Login',
+      // dispatch action
+      store.dispatch('logout').then(() => {
+        router.push({
+          name: 'Login',
+        })
       })
     }
 
