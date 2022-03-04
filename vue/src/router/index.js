@@ -32,6 +32,7 @@ const routes = [
     redirect: '/login',
     name: 'Auth',
     component: AuthLayout,
+    meta: { isGuest: true },
     children: [
       {
         path: '/login',
@@ -56,10 +57,7 @@ router.beforeEach((to, from, next) => {
   // check user token when "requiresAuth" exists in "meta" key
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({ name: 'Login' })
-  } else if (
-    store.state.user.token &&
-    (to.name === 'Login' || to.name === 'Register')
-  ) {
+  } else if (store.state.user.token && to.meta.isGuest) {
     // redirect to dashboard if user already logged in and try to go to login or register pages
     next({ name: 'Dashboard' })
   } else {
