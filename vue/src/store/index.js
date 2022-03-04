@@ -13,7 +13,120 @@ const tmpSurveys = [
     created_at: '2022-03-04 14:22:00',
     updated_at: '2022-03-04 14:22:00',
     expire_date: '2022-03-04 14:22:00',
-    questions: [],
+    questions: [
+      {
+        id: 1,
+        type: 'select',
+        question: 'Form which country are you?',
+        description: null,
+        data: {
+          options: [
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs', text: 'USA' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313', text: 'Georgia' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312', text: 'Germany' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777', text: 'India' },
+          ],
+        },
+      },
+      {
+        id: 2,
+        type: 'checkbox',
+        question: 'What language videos do you want to see?',
+        description: null,
+        data: {
+          options: [
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs', text: 'JS' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313', text: 'PHP' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312', text: 'HTML' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777', text: 'CSS' },
+          ],
+        },
+      },
+      {
+        id: 3,
+        type: 'checkbox',
+        question: 'What framework?',
+        description: null,
+        data: {
+          options: [
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs', text: 'Laravel' },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313', text: 'Yii2' },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312',
+              text: 'odeigniter',
+            },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777', text: 'Symfony' },
+          ],
+        },
+      },
+      {
+        id: 4,
+        type: 'radio',
+        question: 'Which Laravel framework do you love the most?',
+        description: null,
+        data: {
+          options: [
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs',
+              text: 'Laravel 5',
+            },
+            { uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313', text: 'Laravel 6' },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312',
+              text: 'Laravel 7',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777',
+              text: 'Laravel 8',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777',
+              text: 'Laravel 9',
+            },
+          ],
+        },
+      },
+      {
+        id: 5,
+        type: 'checkbox',
+        question: 'What industry?',
+        description: null,
+        data: {
+          options: [
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-asdfadfs',
+              text: 'ecommerce',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-1231313',
+              text: 'real estate',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-41231312',
+              text: 'consumer goods',
+            },
+            {
+              uuid: 'asdfasdfas-asdfasdf-asdfasdf-12777777',
+              text: 'all of the above',
+            },
+          ],
+        },
+      },
+      {
+        id: 6,
+        type: 'text',
+        question: "What's your favorite youtube channe?",
+        description: null,
+        data: {},
+      },
+      {
+        id: 7,
+        type: 'textarea',
+        question: "What's your think about this survey?",
+        description: 'write your honest option. Everything is anonymous.',
+        data: {},
+      },
+    ],
   },
 ]
 
