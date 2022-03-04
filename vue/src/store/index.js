@@ -10,7 +10,7 @@ const store = createStore({
   getters: {},
   actions: {
     register({ commit }, user) {
-      return fetch(`http://localhost:8000/api/register`, {
+      return fetch(`https://laravel-vue-survey.test/api/register`, {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',

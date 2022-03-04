@@ -67,7 +67,7 @@
         <input
           id="password_confirmation"
           name="password_confirmation"
-          type="password_confirmation"
+          type="password"
           autocomplete="current-password_confirmation"
           required
           v-model="user.password_confirmation"
