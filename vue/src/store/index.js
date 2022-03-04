@@ -8,7 +8,7 @@ const tmpSurveys = [
     slug: 'youtube-channel-content',
     status: 'draft',
     image:
-      'https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEyqj2_400x400.png',
+      'https://wallpaperaccess.com/full/2749353.jpg',
     description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
     created_at: '2022-03-04 14:22:00',
     updated_at: '2022-03-04 14:22:00',
@@ -134,7 +134,7 @@ const tmpSurveys = [
     slug: 'survey2',
     status: 'draft',
     image:
-      'https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEyqj2_400x400.png',
+      'https://previews.123rf.com/images/wolfmaster13/wolfmaster131605/wolfmaster13160500002/58016684-sch%C3%B6ne-aussicht-auf-fujisan-berg-mit-kirschbl%C3%BCte-im-fr%C3%BChling-kawaguchiko-see-japan.jpg',
     description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
     created_at: '2022-03-04 14:22:00',
     updated_at: '2022-03-04 14:22:00',
@@ -196,7 +196,7 @@ const tmpSurveys = [
     slug: 'survey-3',
     status: 'draft',
     image:
-      'https://pbs.twimg.com/profile_images/1118059535003017221/9ZwEyqj2_400x400.png',
+      'https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=',
     description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
     created_at: '2022-03-04 14:22:00',
     updated_at: '2022-03-04 14:22:00',
