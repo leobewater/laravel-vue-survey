@@ -10,6 +10,7 @@
       <form @submit.prevent="saveSurvey">
         <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+            <!-- Image -->
             <div>
               <label class="block text-sm font-medium text-gray-700">
                 Image
@@ -48,6 +49,16 @@
                 </button>
               </div>
             </div>
+
+            <!-- Title -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Title
+              </label>
+              <input type="text" name="title" id="title" v-model="model.title" autocomplete="survey_title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+            </div>
+
+            <!-- Description -->
           </div>
         </div>
       </form>
