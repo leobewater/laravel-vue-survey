@@ -7,9 +7,6 @@
         </h1>
       </div>
 
-      <pre>
-        {{ model }}
-      </pre>
       <form @submit.prevent="saveSurvey">
         <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -122,6 +119,42 @@
             </div>
             <!-- / survey fields -->
 
+            <!-- Questions -->
+            <div>
+              <h3
+                class="text-2xl font-semibold flex items-center justify-between"
+              >
+                Questions
+                <button
+                  type="button"
+                  @click="addQuestion()"
+                  class="flex items-center text-sm py-1 px-4 rounded-sm text-white bg-gray-600 hover:bg-gray-700"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4v16m8-8H4"
+                    /></svg
+                  >Add Question
+                </button>
+              </h3>
+              <div
+                v-if="!model.questions.length"
+                class="text-center text-gray-600"
+              >
+                You don't have any questions created
+              </div>
+            </div>
+
+            <!-- Button -->
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button
                 type="submit"
@@ -164,4 +197,6 @@ if (route.params.id) {
 }
 
 function saveSurvey() {}
+
+function addQuestion() {}
 </script>
