@@ -152,6 +152,18 @@
               >
                 You don't have any questions created
               </div>
+
+              <div
+                v-for="(question, index) in model.questions"
+                :key="question.id"
+              >
+                <QuestionEditor
+                  :question="question"
+                  :index="index"
+                  @change="questionChange"
+                  @deleteQuestion="deleteQuestion"
+                />
+              </div>
             </div>
 
             <!-- Button -->
@@ -176,6 +188,7 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import PageComponent from '../components/PageComponent.vue'
+import QuestionEditor from '../components/editor/QuestionEditor.vue'
 
 const route = useRoute()
 
@@ -199,4 +212,8 @@ if (route.params.id) {
 function saveSurvey() {}
 
 function addQuestion() {}
+
+function questionChange() {}
+
+function deleteQuestion() {}
 </script>
