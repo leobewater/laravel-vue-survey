@@ -44,7 +44,11 @@
                 <button
                   type="button"
                   class="relative overflow-hidden ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                ><input type="file" class="absolute left-0 top-0 right-0 bottom-0 opacity-0 cursor-pointer" />
+                >
+                  <input
+                    type="file"
+                    class="absolute left-0 top-0 right-0 bottom-0 opacity-0 cursor-pointer"
+                  />
                   Change
                 </button>
               </div>
@@ -55,10 +59,48 @@
               <label class="block text-sm font-medium text-gray-700">
                 Title
               </label>
-              <input type="text" name="title" id="title" v-model="model.title" autocomplete="survey_title" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                v-model="model.title"
+                autocomplete="survey_title"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
             </div>
 
             <!-- Description -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                rows="3"
+                v-model="model.description"
+                autocomplete="survey_description"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                placeholder="Describe your survey"
+              />
+            </div>
+
+            <!-- Expire Date -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700">
+                Expire Date
+              </label>
+              <input
+                type="date"
+                name="expire_date"
+                id="expire_date"
+                v-model="model.expire_date"
+                autocomplete="survey_title"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
+
+              
+            </div>
           </div>
         </div>
       </form>
