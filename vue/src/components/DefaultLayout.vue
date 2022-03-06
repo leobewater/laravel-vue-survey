@@ -141,9 +141,10 @@
     </Disclosure>
 
     <router-view />
+    <Notification />
   </div>
 </template>
-<script>
+<script setup>
 import {
   Disclosure,
   DisclosureButton,
@@ -157,43 +158,24 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import Notification from './Notification.vue'
 
 const navigation = [
   { name: 'Dashboard', to: { name: 'Dashboard' } },
   { name: 'Surveys', to: { name: 'Surveys' } },
 ]
 
-export default {
-  components: {
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    BellIcon,
-    MenuIcon,
-    XIcon,
-  },
-  setup() {
-    const store = useStore()
-    const router = useRouter()
+const store = useStore()
+const router = useRouter()
 
-    function logout() {
-      // dispatch action
-      store.dispatch('logout').then(() => {
-        router.push({
-          name: 'Login',
-        })
-      })
-    }
-
-    return {
-      user: computed(() => store.state.user.data),
-      navigation,
-      logout,
-    }
-  },
+function logout() {
+  // dispatch action
+  store.dispatch('logout').then(() => {
+    router.push({
+      name: 'Login',
+    })
+  })
 }
+
+const user = computed(() => store.state.user.data)
 </script>
