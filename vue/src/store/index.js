@@ -91,11 +91,13 @@ const store = createStore({
     deleteSurvey({}, id) {
       return axiosClient.delete(`/survey/${id}`)
     },
-    getSurveys({ commit }) {
+    getSurveys({ commit }, { url = null } = {}) {
+      url = url || '/survey'
+
       // set surveys loading
       commit('setSurveysLoading', true)
 
-      return axiosClient.get('/survey').then((res) => {
+      return axiosClient.get(url).then((res) => {
         commit('setSurveysLoading', false)
         commit('setSurveys', res.data)
         return res
