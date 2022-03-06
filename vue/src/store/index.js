@@ -238,20 +238,45 @@ const store = createStore({
       data: {},
       token: sessionStorage.getItem('TOKEN'),
     },
+    currentSurvey: {
+      loading: false,
+      data: {},
+    },
     surveys: [...tmpSurveys],
     questionTypes: ['text', 'select', 'radio', 'checkbox', 'textarea'],
   },
   getters: {},
   actions: {
+    getSurvey({ commit }, id) {
+      // set survey loading
+      commit('setCurrentSurveyLoading', true)
+
+      // get survey
+      return axiosClient
+        .get(`/survey/${id}`)
+        .then((res) => {
+          // set survey to currentSurvey var
+          commit('setCurrentSurvey', res.data)
+
+          // update survey loading
+          commit('setCurrentSurveyLoading', false)
+
+          return res
+        })
+        .catch((err) => {
+          commit('setCurrentSurveyLoading', false)
+          throw err
+        })
+    },
     saveSurvey({ commit }, survey) {
       // remove non-fillable property
-      delete survey.image_url;
+      delete survey.image_url
 
       let response
-      
+
       if (survey.id) {
         // update survey
-        reseponse = axiosClient
+        response = axiosClient
           .put(`/survey/${survey.id}`, survey)
           .then((res) => {
             commit('updateSurvey', res.data)
@@ -285,6 +310,12 @@ const store = createStore({
     },
   },
   mutations: {
+    setCurrentSurveyLoading: (state, loading) => {
+      state.currentSurvey.loading = loading
+    },
+    setCurrentSurvey: (state, survey) => {
+      state.currentSurvey.data = survey.data
+    },
     saveSurvey: (state, survey) => {
       state.surveys = [...state.surveys, survey.data]
     },
