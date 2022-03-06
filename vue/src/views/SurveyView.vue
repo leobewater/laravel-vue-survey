@@ -214,6 +214,21 @@ if (route.params.id) {
   )
 }
 
+function onImageChoose(ev) {
+  const file = ev.target.files[0]
+
+  // preview image
+  const reader = new FileReader()
+  reader.onload = () => {
+    // the field to send on backend and apply validations
+    model.value.image = reader.result
+
+    // for display only
+    model.value.image_url = reader.result
+  }
+  reader.readAsDataURL(file)
+}
+
 // event lisetners
 function addQuestion(index) {
   const newQuestion = {
@@ -247,7 +262,7 @@ function saveSurvey() {
   store.dispatch('saveSurvey', model.value).then(({ data }) => {
     route.push({
       name: 'SurveyView',
-      params: { id: data.data.id},
+      params: { id: data.data.id },
     })
   })
 }
