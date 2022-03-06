@@ -9,6 +9,7 @@ const store = createStore({
     },
     surveys: {
       loading: false,
+      links: [],
       data: [],
     },
     currentSurvey: {
@@ -106,6 +107,7 @@ const store = createStore({
       state.surveys.loading = loading
     },
     setSurveys: (state, surveys) => {
+      state.surveys.links = surveys.meta.links
       state.surveys.data = surveys.data
     },
     setCurrentSurveyLoading: (state, loading) => {
