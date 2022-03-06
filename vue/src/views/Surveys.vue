@@ -51,6 +51,9 @@ function deleteSurvey(survey) {
     )
   ) {
     // delete survey
+    store.dispatch('deleteSurvey', survey.id).then(() => {
+      store.dispatch('getSurveys')
+    })
   }
 }
 </script>
