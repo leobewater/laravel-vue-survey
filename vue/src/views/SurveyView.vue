@@ -189,12 +189,13 @@
 import { v4 as uuidv4 } from 'uuid'
 import store from '../store'
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import PageComponent from '../components/PageComponent.vue'
 import QuestionEditor from '../components/editor/QuestionEditor.vue'
 
 const route = useRoute()
+const router = useRouter()
 
 // create empty survey
 let model = ref({
@@ -212,8 +213,6 @@ if (route.params.id) {
     (s) => s.id === parseInt(route.params.id)
   )
 }
-
-function saveSurvey() {}
 
 // event lisetners
 function addQuestion(index) {
@@ -241,6 +240,15 @@ function questionChange(question) {
       return JSON.parse(JSON.stringify(question))
     }
     return q
+  })
+}
+
+function saveSurvey() {
+  store.dispatch('saveSurvey', model.value).then(({ data }) => {
+    route.push({
+      name: 'SurveyView',
+      params: { id: data.data.id},
+    })
   })
 }
 </script>
