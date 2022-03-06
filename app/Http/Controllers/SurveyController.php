@@ -69,7 +69,21 @@ class SurveyController extends Controller
      */
     public function update(UpdateSurveyRequest $request, Survey $survey)
     {
-        $survey->update($request->validated());
+        $data = $request->validated();
+
+        // check if image was given and save on local file system
+        if (isset($data['image'])) {
+            $relativePath = $this->saveImage($data['image']);
+            $data['image'] = $relativePath;
+
+            // delete previously saved image
+            if ($survey->image) {
+                $absolutePath = public_path($survey->image);
+                File::delete($absolutePath);
+            }
+        }
+
+        $survey->update($data);
         return new SurveyResource($survey);
     }
 
@@ -121,7 +135,7 @@ class SurveyController extends Controller
         $file = Str::random() . '.' . $type;
         $absolutePath = public_path($dir);
         $relativePath = $dir . $file;
-        
+
         // create folder if it doesn't exist
         if (!File::exists($absolutePath)) {
             File::makeDirectory($absolutePath, 0755, true);
@@ -129,7 +143,7 @@ class SurveyController extends Controller
 
         // upload file to folder
         file_put_contents($relativePath, $image);
-        
+
         return $relativePath;
     }
 }
