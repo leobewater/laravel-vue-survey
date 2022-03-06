@@ -43,6 +43,17 @@ const store = createStore({
         return res
       })
     },
+    getSurveys({ commit }, { url = null } = {}) {
+      // set surveys loading
+      commit('setSurveysLoading', true)
+
+      url = url || '/survey'
+      return axiosClient.get(url).then((res) => {
+        commit('setSurveysLoading', false)
+        commit('setSurveys', res.data)
+        return res
+      })
+    },
     getSurvey({ commit }, id) {
       // set survey loading
       commit('setCurrentSurveyLoading', true)
@@ -57,6 +68,20 @@ const store = createStore({
           // update survey loading
           commit('setCurrentSurveyLoading', false)
 
+          return res
+        })
+        .catch((err) => {
+          commit('setCurrentSurveyLoading', false)
+          throw err
+        })
+    },
+    getSurveyBySlug({ commit }, slug) {
+      commit('setCurrentSurveyLoading', true)
+      return axiosClient
+        .get(`/survey-by-slug/${slug}`)
+        .then((res) => {
+          commit('setCurrentSurvey', res.data)
+          commit('setCurrentSurveyLoading', false)
           return res
         })
         .catch((err) => {
@@ -88,23 +113,28 @@ const store = createStore({
 
       return response
     },
-    deleteSurvey({}, id) {
-      return axiosClient.delete(`/survey/${id}`)
-    },
-    getSurveys({ commit }, { url = null } = {}) {
-      url = url || '/survey'
-
-      // set surveys loading
-      commit('setSurveysLoading', true)
-
-      return axiosClient.get(url).then((res) => {
-        commit('setSurveysLoading', false)
-        commit('setSurveys', res.data)
+    deleteSurvey({ dispatch }, id) {
+      return axiosClient.delete(`/survey/${id}`).then((res) => {
+        dispatch('getSurveys')
         return res
       })
     },
+    saveSurveyAnswer({ commit }, { surveyId, answers }) {
+      return axiosClient.post(`/survey/${surveyId}/answer`, { answers })
+    },
   },
+
   mutations: {
+    logout: (state) => {
+      state.user.data = {}
+      state.user.token = null
+      sessionStorage.removeItem('TOKEN')
+    },
+    setUser: (state, userData) => {
+      state.user.token = userData.token
+      state.user.data = userData.user
+      sessionStorage.setItem('TOKEN', userData.token)
+    },
     setSurveysLoading: (state, loading) => {
       state.surveys.loading = loading
     },
@@ -117,27 +147,6 @@ const store = createStore({
     },
     setCurrentSurvey: (state, survey) => {
       state.currentSurvey.data = survey.data
-    },
-    // saveSurvey: (state, survey) => {
-    //   state.surveys = [...state.surveys, survey.data]
-    // },
-    // updateSurvey: (state, survey) => {
-    //   state.surveys = state.surveys.map((s) => {
-    //     if (s.id === survey.data.id) {
-    //       return survey.data
-    //     }
-    //     return s
-    //   })
-    // },
-    logout: (state) => {
-      state.user.data = {}
-      state.user.token = null
-      sessionStorage.removeItem('TOKEN')
-    },
-    setUser: (state, userData) => {
-      state.user.token = userData.token
-      state.user.data = userData.user
-      sessionStorage.setItem('TOKEN', userData.token)
     },
     notify: (state, { message, type }) => {
       state.notification.show = true
