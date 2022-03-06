@@ -7,23 +7,41 @@ const store = createStore({
       data: {},
       token: sessionStorage.getItem('TOKEN'),
     },
-    currentSurvey: {
-      loading: false,
-      data: {},
-    },
     surveys: {
       loading: false,
       data: [],
     },
+    currentSurvey: {
+      data: {},
+      loading: false,
+    },
     questionTypes: ['text', 'select', 'radio', 'checkbox', 'textarea'],
     notification: {
       show: false,
-      type: null,
+      type: 'success',
       message: '',
     },
   },
   getters: {},
   actions: {
+    register({ commit }, user) {
+      return axiosClient.post('/register', user).then(({ data }) => {
+        commit('setUser', data)
+        return data
+      })
+    },
+    login({ commit }, user) {
+      return axiosClient.post('/login', user).then(({ data }) => {
+        commit('setUser', data)
+        return data
+      })
+    },
+    logout({ commit }) {
+      return axiosClient.post('/logout').then((res) => {
+        commit('logout')
+        return res
+      })
+    },
     getSurvey({ commit }, id) {
       // set survey loading
       commit('setCurrentSurveyLoading', true)
@@ -67,7 +85,7 @@ const store = createStore({
         })
       }
 
-      return response;
+      return response
     },
     deleteSurvey({}, id) {
       return axiosClient.delete(`/survey/${id}`)
@@ -79,24 +97,6 @@ const store = createStore({
       return axiosClient.get('/survey').then((res) => {
         commit('setSurveysLoading', false)
         commit('setSurveys', res.data)
-        return res
-      })
-    },
-    register({ commit }, user) {
-      return axiosClient.post('/register', user).then(({ data }) => {
-        commit('setUser', data)
-        return data
-      })
-    },
-    login({ commit }, user) {
-      return axiosClient.post('/login', user).then(({ data }) => {
-        commit('setUser', data)
-        return data
-      })
-    },
-    logout({ commit }) {
-      return axiosClient.post('/logout').then((res) => {
-        commit('logout')
         return res
       })
     },
