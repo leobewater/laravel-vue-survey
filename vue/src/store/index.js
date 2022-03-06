@@ -7,8 +7,8 @@ const tmpSurveys = [
     title: 'Youtube Channel content',
     slug: 'youtube-channel-content',
     status: 'draft',
-    image:
-      'https://wallpaperaccess.com/full/2749353.jpg',
+    image: null,
+      //'https://wallpaperaccess.com/full/2749353.jpg',
     description: 'My name is xxxxx.xxxx .xxxxxx.xxxx.',
     created_at: '2022-03-04 14:22:00',
     updated_at: '2022-03-04 14:22:00',
@@ -239,6 +239,7 @@ const store = createStore({
       token: sessionStorage.getItem('TOKEN'),
     },
     surveys: [...tmpSurveys],
+    questionTypes: ["text", "select", "radio", "checkbox", "textarea"],
   },
   getters: {},
   actions: {
