@@ -24,13 +24,14 @@
       </div>
     </template>
 
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols3">
+    <div v-if="surveys.loading" class="flex justify-center">Loading...</div>
+    <div v-else class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols3">
       <SurveyListItem
-        v-for="(survey, idx) in surveys"
+        v-for="(survey, idx) in surveys.data"
         :key="survey.id"
         :survey="survey"
         class="opacity-0 animate-fade-in-down"
-        :style="{animationDelay: `${idx * 0.1}s`}"
+        :style="{ animationDelay: `${idx * 0.1}s` }"
         @delete="deleteSurvey(survey)"
       />
     </div>
@@ -43,7 +44,7 @@ import { computed } from 'vue'
 import PageComponent from '../components/PageComponent.vue'
 import SurveyListItem from '../components/SurveyListItem.vue'
 
-const surveys = computed(() => store.state.surveys.data)
+const surveys = computed(() => store.state.surveys)
 store.dispatch('getSurveys')
 
 function deleteSurvey(survey) {
