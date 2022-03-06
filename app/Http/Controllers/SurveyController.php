@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Survey;
+use Illuminate\Http\Request;
+use App\Http\Resources\SurveyResource;
 use App\Http\Requests\StoreSurveyRequest;
 use App\Http\Requests\UpdateSurveyRequest;
-use App\Models\Survey;
 
 class SurveyController extends Controller
 {
@@ -13,9 +15,10 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = $request->user();
+        return SurveyResource::collection(Survey::where('user_id', $user->id)->paginate());
     }
 
     /**
