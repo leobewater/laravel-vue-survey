@@ -244,7 +244,11 @@ const store = createStore({
   getters: {},
   actions: {
     saveSurvey({ commit }, survey) {
+      // remove non-fillable property
+      delete survey.image_url;
+
       let response
+      
       if (survey.id) {
         // update survey
         reseponse = axiosClient
