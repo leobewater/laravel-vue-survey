@@ -52,10 +52,10 @@
             <div>Status:</div>
             <div>{{ data.latestSurvey.status ? 'Active' : 'Draft' }}</div>
           </div>
-          <!-- <div class="flex justify-between text-sm mb-1">
+          <div class="flex justify-between text-sm mb-1">
             <div>Questions:</div>
             <div>{{ data.latestSurvey.questions }}</div>
-          </div> -->
+          </div>
           <div class="flex justify-between text-sm mb-3">
             <div>Answers:</div>
             <div>{{ data.latestSurvey.answers }}</div>
