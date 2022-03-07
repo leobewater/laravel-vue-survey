@@ -37,9 +37,15 @@ class Survey extends Model
             ->saveSlugsTo('slug');
     }
 
-    // survey question relationship
+    // survey and question relationship
     public function questions()
     {
         return $this->hasMany(SurveyQuestion::class);
+    }
+
+    // survey and answer relationship
+    public function answers()
+    {
+        return $this->hasMany(SurveyAnswer::class);
     }
 }
