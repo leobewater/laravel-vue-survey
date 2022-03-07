@@ -42,7 +42,6 @@
         </svg>
       </span>
     </Alert>
-    <input type="hidden" name="remember" value="true" />
     <div class="rounded-md shadow-sm -space-y-px">
       <div>
         <label for="email-address" class="sr-only">Email address</label>
@@ -142,7 +141,6 @@ const router = useRouter()
 const user = {
   email: '',
   password: '',
-  remember: false,
 }
 let loading = ref(false);
 let errorMsg = ref('')

@@ -1,8 +1,9 @@
 import axios from 'axios'
 import store from './store'
+//console.log(import.meta.env.VITE_API_BASE_URL)
 
 const axiosClient = axios.create({
-  baseURL: 'https://laravel-vue-survey.test/api',
+  baseURL: `https://laravel-vue-survey.test/api`,
 })
 
 // add to every request
