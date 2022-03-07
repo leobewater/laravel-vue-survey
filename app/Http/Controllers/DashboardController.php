@@ -22,17 +22,17 @@ class DashboardController extends Controller
 
         // total number of answers
         $totalAnswers = SurveyAnswer::query()
-            ->join('surveys', 'survey_answers.survery_id', '=', 'surveys.id')
+            ->join('surveys', 'survey_answers.survey_id', '=', 'surveys.id')
             ->where('surveys.user_id', $user->id)
             ->count();
 
         // latest 5 answers
         $latestAnswers = SurveyAnswer::query()
-            ->join('surveys', 'survey_answers.survery_id', '=', 'surveys.id')
+            ->join('surveys', 'survey_answers.survey_id', '=', 'surveys.id')
             ->where('surveys.user_id', $user->id)
             ->orderBy('end_date', 'DESC')
             ->limit(5)
-            ->getModels('suvey_answers.*');
+            ->getModels('survey_answers.*');
 
         return [
             'totalSurveys' => $total,
